@@ -1,0 +1,42 @@
+﻿@page "/Orders/Index"
+@using WebApp.Interfaces
+@model WebApp.Pages.Orders.IndexModel
+@inject IOrder OrderRepository
+
+<h2>Orders</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Car Id</th>
+            <th>User Id</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Total Price</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model.Orders)
+        {
+            <tr>
+                <td>@order.CarId</td>
+                <td>@order.UserId</td>
+                <td>@order.StartDate</td>
+                <td>@order.EndDate</td>
+                <td>@order.TotalPrice</td>
+                <td>
+                    <a asp-page="./Details" asp-route-id="@order.OrderId">Details</a> |
+                    <a asp-page="./Edit" asp-route-id="@order.OrderId">Edit</a> |
+                    <a asp-page="./Delete" asp-route-id="@order.OrderId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

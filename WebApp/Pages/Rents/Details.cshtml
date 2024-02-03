@@ -1,0 +1,79 @@
+﻿@page
+@model WebApp.Pages.Rents.DetailsModel
+@using WebApp.Models
+
+@{
+    ViewData["Title"] = "Car Details";
+}
+
+
+<h2>Car Details</h2>
+
+<div>
+    <h4>@Model.Car.Brand - @Model.Car.Model</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Car.Brand)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Car.Brand)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Car.Model)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Car.Model)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Car.Year)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Car.Year)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Car.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Car.Price)
+        </dd>
+    </dl>
+
+    <h4>Car Image</h4>
+    <dl class="row">
+        @foreach (var imagePath in Model.Car.ImagePath)
+        {
+            <img src="@imagePath" alt="Car Image" class="img-fluid" />
+        }
+    </dl>
+</div>
+
+<p>
+    @if (User.IsInRole("User"))
+    {
+        if (Model.Car.Status == CarStatus.Available)
+        {
+            <a asp-page="/Rents/RentCar" asp-route-id="@Model.Car.CarId" class="btn btn-primary">Rent Now</a>
+        }
+        else
+        {
+            <button class="btn btn-secondary" disabled>Not Available</button>
+        <p>This car is not available at the moment or it's already rented.</p>
+        }
+    }
+    else
+    {
+    <p>Please <a asp-page="/Users/Login">login</a> to rent this car.</p>
+    }
+</p>
+
+<div>
+    <a asp-page="/Rents/Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

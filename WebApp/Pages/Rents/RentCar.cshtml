@@ -1,0 +1,49 @@
+﻿@page
+@model WebApp.Pages.Rents.RentCarModel
+
+@{
+    ViewData["Title"] = "Rent Car";
+}
+
+
+<h2>Rent Car</h2>
+
+<form method="post">
+    <label for="startDate">Start Date:</label>
+    <input type="datetime-local" name="startDate" id="startDate" required onchange="calculateTotalPrice()" />
+    <label for="endDate">End Date:</label>
+    <input type="datetime-local" name="endDate" id="endDate" required onchange="calculateTotalPrice()" />
+
+    <div>
+        <label>Total Price:</label>
+        <span id="totalPrice">@Model.TotalPrice</span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Rent Now</button>
+</form>
+
+<div>
+    <a asp-page="/Rents/Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script>
+        function calculateTotalPrice() {
+            var startDate = new Date(document.getElementById("startDate").value);
+            var endDate = new Date(document.getElementById("endDate").value);
+
+            if (isNaN(startDate) || isNaN(endDate)) {
+                console.error("Invalid date format");
+                return;
+            }
+
+            var totalPrice = parseFloat("@Model.Price");
+            var numberOfDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+            var increasePrice = 500; //If you want to change the price you need to do the same in RentCar.cshtml.cs!!!!
+            totalPrice += increasePrice * numberOfDays;
+
+            document.getElementById("totalPrice").innerText = totalPrice.toFixed(2);
+        }
+    </script>
+}
+

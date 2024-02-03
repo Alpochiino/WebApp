@@ -1,0 +1,42 @@
+﻿@page
+@model WebApp.Pages.Admins.RegisterModel
+
+<h2>Admin Register</h2>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <p>You are already logged in as @User.Identity.Name. <a asp-page="/Index">Go to Dashboard</a></p>
+}
+else
+{
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="Model.Username"></label>
+            <input asp-for="Model.Username" class="form-control" value="Admin" readonly />
+        </div>
+        <div class="form-group">
+            <label asp-for="Model.Email"></label>
+            <input asp-for="Model.Email" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Model.Password"></label>
+            <input asp-for="Model.Password" type="password" class="form-control" />
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+    </form>
+
+    @if (!string.IsNullOrEmpty(TempData["error"] as string))
+    {
+        <div class="alert alert-danger" role="alert">
+            @TempData["error"]
+        </div>
+    }
+}
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

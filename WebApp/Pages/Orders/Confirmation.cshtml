@@ -1,0 +1,45 @@
+﻿@page
+@model WebApp.Pages.Orders.ConfirmationModel
+
+@{
+    ViewData["Title"] = "Confirmation";
+}
+
+<h2>Renting Confirmation</h2>
+
+@if (Model.Order != null)
+{
+    <h6>Thank you for renting a car from us!</h6>
+
+    <dl>
+        <dt>Order Id:</dt>
+        <dd>@Model.Order.OrderId</dd>
+        <dt>Car Model:</dt>
+        <dd>@Model.Order.Car.Model</dd>
+
+        <dt>Car Brand:</dt>
+        <dd>@Model.Order.Car.Brand</dd>
+
+        <dt>Start Date:</dt>
+        <dd>@Model.Order.StartDate.ToLongDateString()</dd>
+
+        <dt>End Date:</dt>
+        <dd>@Model.Order.EndDate.ToLongDateString()</dd>
+
+        <dt>Total Price:</dt>
+        <dd>@Model.Order.TotalPrice.ToString("C")</dd>
+    </dl>
+}
+else
+{
+    <p>No booking confirmation available.</p>
+}
+
+<tr>
+    <td>
+            
+        <a class="btn btn-secondary" asp-page="/Rents/Details" asp-route-id="@Model.Order?.Car.CarId">Car Details</a> |
+        <a class="btn btn-secondary" asp-page="./Dashboard">Back to Dashboard</a> 
+
+    </td>
+</tr>

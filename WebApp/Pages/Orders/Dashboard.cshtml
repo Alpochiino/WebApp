@@ -1,0 +1,43 @@
+﻿@page
+@model WebApp.Pages.Orders.DashboardModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container mt-5">
+    <div class="col-md-8 offset-md-2">
+        <h2 class="text-center">Your Renting Confirmations</h2>
+
+        @if (Model.Orders != null && Model.Orders.Any())
+        {
+            <table class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Order ID</th>
+                        <th scope="col" class="text-right">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model.Orders)
+                    {
+                        <tr>
+                            <td>@order.OrderId</td>
+                            <td class="text-right">
+                                <a class="btn btn-primary" asp-page="/Orders/Confirmation" asp-route-OrderId="@order.OrderId">View Details</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p class="alert alert-info">No booking confirmations available.</p>
+        }
+
+        <div class="mt-3 text-center">
+            <a class="btn btn-secondary" asp-page="/Rents/Index">Back to List</a>
+        </div>
+    </div>
+</div>

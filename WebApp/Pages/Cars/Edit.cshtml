@@ -1,0 +1,52 @@
+﻿@page "/Cars/Edit"
+@using WebApp.Interfaces
+@model WebApp.Pages.Cars.EditModel
+@inject ICar CarRepository
+
+<h2>Edit Car</h2>
+
+<form asp-page="Edit" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Car.CarId"/>
+    <div class="form-group">
+        <label asp-for="Car.Model" class="control-label"></label>
+        <input asp-for="Car.Model" class="form-control" />
+        <span asp-validation-for="Car.Model" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Car.Brand" class="control-label"></label>
+        <input asp-for="Car.Brand" class="form-control" />
+        <span asp-validation-for="Car.Brand" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Car.Year" class="control-label"></label>
+        <input asp-for="Car.Year" class="form-control" />
+        <span asp-validation-for="Car.Year" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Car.Price" class="control-label"></label>
+        <input asp-for="Car.Price" class="form-control" />
+        <span asp-validation-for="Car.Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Car.ImageFiles">Upload Images:</label>
+        <input asp-for="Car.ImageFiles" type="file" multiple class="form-control" />
+        <span asp-validation-for="Car.ImageFiles" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="hidden" asp-for="Car.ImagePath"/>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Update" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

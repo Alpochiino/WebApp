@@ -1,0 +1,62 @@
+﻿<script>
+    function showImage(carImage, imagePaths, currentImageIndex) {
+        carImage.src = imagePaths[currentImageIndex];
+    }
+
+    function showPreviousImage(carImage, imagePaths, currentImageIndex) {
+        if (currentImageIndex > 0) {
+            currentImageIndex--;
+        } else {
+            currentImageIndex = imagePaths.length - 1;
+        }
+        showImage(carImage, imagePaths, currentImageIndex);
+    }
+
+    function showNextImage(carImage, imagePaths, currentImageIndex) {
+        if (currentImageIndex < imagePaths.length - 1) {
+            currentImageIndex++;
+        } else {
+            currentImageIndex = 0;
+        }
+        showImage(carImage, imagePaths, currentImageIndex);
+    }
+</script>
+
+<style>
+    .carousel-item {
+        transition: opacity 0.1s ease-in-out;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        color: black;
+        background-color: transparent;
+        border: none;
+        outline: none;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        filter: invert(100%);
+    }
+
+    .carousel-control-prev:hover,
+    .carousel-control-next:hover {
+        color: black;
+        background-color: transparent;
+    }
+
+    .carousel-control-prev:focus,
+    .carousel-control-next:focus,
+    .carousel-control-prev:active,
+    .carousel-control-next:active {
+        color: black;
+        background-color: transparent;
+        outline: none;
+    }
+
+    .carousel-control-prev, .carousel-control-next, .carousel-control-prev-icon, .carousel-control-next-icon {
+        text-decoration: none !important;
+        outline: none !important;
+    }
+</style>
