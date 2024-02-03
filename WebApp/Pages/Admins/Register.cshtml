@@ -1,6 +1,9 @@
 ﻿@page
 @model WebApp.Pages.Admins.RegisterModel
 
+<link rel="stylesheet" href="~/css/EntryForms.css" />
+
+
 <h2>Admin Register</h2>
 
 @if (User.Identity.IsAuthenticated)
@@ -9,18 +12,21 @@
 }
 else
 {
-    <form method="post">
+    <form method="post" class="mt-4">
         <div class="form-group">
-            <label asp-for="Model.Username"></label>
+            <label asp-for="Model.Username" class="label-left"></label>
             <input asp-for="Model.Username" class="form-control" value="Admin" readonly />
         </div>
-        <div class="form-group">
-            <label asp-for="Model.Email"></label>
+        <div class="form-group" class="label-left">
+            <label asp-for="Model.Email" class="label-left"></label>
             <input asp-for="Model.Email" class="form-control" />
+            <span asp-validation-for="Model.Email" class="text-danger"></span>
+
         </div>
         <div class="form-group">
-            <label asp-for="Model.Password"></label>
+            <label asp-for="Model.Password" class="label-left"></label>
             <input asp-for="Model.Password" type="password" class="form-control" />
+            <span asp-validation-for="Model.Password" class="text-danger"></span>
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Register</button>
@@ -29,11 +35,15 @@ else
 
     @if (!string.IsNullOrEmpty(TempData["error"] as string))
     {
-        <div class="alert alert-danger" role="alert">
+        <div class="alert alert-danger mt-4" role="alert">
             @TempData["error"]
         </div>
     }
 }
+
+<div>
+    <a asp-page="./Login">Back to Login</a>
+</div>
 
 @section Scripts {
     @{

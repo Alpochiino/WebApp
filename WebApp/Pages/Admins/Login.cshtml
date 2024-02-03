@@ -1,19 +1,22 @@
 ﻿@page "/Admins/Login"
 @model WebApp.Pages.Admins.LoginModel
 
+<link rel="stylesheet" href="~/css/EntryForms.css" />
+
+
 <h2>Admin Login</h2>
 
 <form method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
     <div class="form-group">
-        <label asp-for="Model.Email"></label>
+        <label asp-for="Model.Email" class="label-left"></label>
         <input asp-for="Model.Email" class="form-control" />
         <span asp-validation-for="Model.Email" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="Model.Password"></label>
+        <label asp-for="Model.Password" class="label-left"></label>
         <input asp-for="Model.Password" type="password" class="form-control" />
         <span asp-validation-for="Model.Password" class="text-danger"></span>
     </div>
@@ -22,6 +25,13 @@
         <button type="submit" class="btn btn-primary">Login</button>
     </div>
 </form>
+
+<div>
+    <p class="p-p">Dont have an account?</p>
+</div>
+<div>
+    <a asp-page="./Register">Signup here</a>
+</div>
 
 @section Scripts {
     @{
