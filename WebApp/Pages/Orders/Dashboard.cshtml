@@ -14,7 +14,7 @@
             <table class="table table-bordered table-hover">
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col">Order ID</th>
+                        <th scope="col">Latest Orders</th>
                         <th scope="col" class="text-right">Action</th>
                     </tr>
                 </thead>
@@ -22,7 +22,7 @@
                     @foreach (var order in Model.Orders)
                     {
                         <tr>
-                            <td>@order.OrderId</td>
+                            <td>ID: @order.OrderId</td>
                             <td class="text-right">
                                 <a class="btn btn-primary" asp-page="/Orders/Confirmation" asp-route-OrderId="@order.OrderId">View Details</a>
                             </td>
