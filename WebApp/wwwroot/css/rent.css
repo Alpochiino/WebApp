@@ -1,6 +1,13 @@
-﻿.card {
+﻿.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Adjust the gap between cards */
+}
+
+.card {
+    width: calc(50% - 20px); /* Adjust the width of each card */
     margin-bottom: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
 }
 
@@ -13,12 +20,12 @@
     font-size: 1.8rem;
     font-weight: bold;
     margin-bottom: 10px;
-    color: #fff; 
+    color: #1a1a1a;
 }
 
 .card-text {
     margin-bottom: 15px;
-    color: #fff; 
+    color: #1a1a1a;
 }
 
 h2 {
@@ -27,14 +34,14 @@ h2 {
 
 .btn-primary {
     text-decoration: none;
-    background-color: #007bff;
+    background-color: #1a1a1a;
     color: #fff;
     transition: background-color 0.3s ease-in-out;
 }
 
 .btn-secondary {
     text-decoration: none;
-    background-color: #6c757d;
+    background-color: #1a1a1a;
     color: #fff;
     transition: background-color 0.3s ease-in-out;
 }
@@ -44,14 +51,14 @@ h2 {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #333;
-    padding: 100px;
+    background-color: #ffffff;
+    padding: 70px;
     text-align: center;
 }
 
 .availability-text {
     margin-bottom: 15px;
-    color: #fff;
+    color: #1a1a1a;
 }
 
 .btn-secondary-disabled {
@@ -60,14 +67,13 @@ h2 {
     cursor: not-allowed;
 }
 
-
 .btn-primary:hover,
 .btn-secondary:hover {
-    background-color: #0056b3; 
+    background-color: #343a40; 
 }
 
 .carousel {
-    max-width: 50%;
+    max-width: 100%;
     overflow: hidden;
     position: relative;
     margin: auto;
@@ -154,3 +160,56 @@ h2 {
     outline: none !important;
 }
 
+.car-index-page {
+    margin: 0; 
+    padding: 0; 
+    height: 100vh; 
+    background-color: white;
+}
+
+.hero-section {
+    position: relative;
+    height: 700px; 
+    color: #fff;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 125px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+}
+
+.hero-overlay::before {
+    content: "";
+    position: absolute;
+    top: -220px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    z-index: 1;
+}
+
+.background-image {
+    position: absolute;
+    top: 127px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    filter: brightness(70%);
+    z-index: -2;
+}
