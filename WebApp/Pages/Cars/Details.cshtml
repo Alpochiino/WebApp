@@ -3,6 +3,10 @@
 @model WebApp.Pages.Cars.DetailsModel
 @inject ICar CarRepository
 
+<script src="~/js/carousel.js"></script>
+<link rel="stylesheet" href="~/css/rent.css" />
+
+
 <h1>Details</h1>
 
 <div>
@@ -36,7 +40,7 @@
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Car.ImagePath)
         </dt>
-        <div id="carouselExampleControls" class="carousel slide" data-interval="false">
+       <div class="carousel" id="@($"carousel_{Model.Car.CarId}")">
             <div class="carousel-inner">
                 @for (var i = 0; i < Model.Car.ImagePath.Count; i++)
                 {
@@ -45,14 +49,8 @@
                     </div>
                 }
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+            <a href="javascript:void(0);" onclick="showPreviousImage('@($"carousel_{Model.Car.CarId}")')" class="carousel-control-prev">&lt;</a>
+            <a href="javascript:void(0);" onclick="showNextImage('@($"carousel_{Model.Car.CarId}")')" class="carousel-control-next">&gt;</a>
         </div>
     </dl>
 </div>
@@ -64,6 +62,5 @@
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
-        await Html.RenderPartialAsync("_CarouselFunctionsPartial");
     }
 }

@@ -1,0 +1,156 @@
+﻿.card {
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    position: relative;
+}
+
+.card-body {
+    padding: 20px;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #fff; 
+}
+
+.card-text {
+    margin-bottom: 15px;
+    color: #fff; 
+}
+
+h2 {
+    color: #1a1a1a; 
+}
+
+.btn-primary {
+    text-decoration: none;
+    background-color: #007bff;
+    color: #fff;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn-secondary {
+    text-decoration: none;
+    background-color: #6c757d;
+    color: #fff;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.availability-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #333;
+    padding: 100px;
+    text-align: center;
+}
+
+.availability-text {
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.btn-secondary-disabled {
+    background-color: #6c757d;
+    color: #fff;
+    cursor: not-allowed;
+}
+
+
+.btn-primary:hover,
+.btn-secondary:hover {
+    background-color: #0056b3; 
+}
+
+.carousel {
+    max-width: 50%;
+    overflow: hidden;
+    position: relative;
+    margin: auto;
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.1s ease-in-out;
+}
+
+.carousel-item {
+    width: 100%;
+    flex: 0 0 auto;
+}
+
+.carousel-item img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: #fff;
+    background-color: #343a40;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background-color: #23272b; 
+}
+
+.carousel-control-prev {
+    left: 10px;
+}
+
+.carousel-control-next {
+    right: 10px;
+}
+
+
+.carousel-item {
+    transition: opacity 0.1s ease-in-out;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    color: black;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(100%);
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    color: black;
+    background-color: transparent;
+}
+
+.carousel-control-prev:focus,
+.carousel-control-next:focus,
+.carousel-control-prev:active,
+.carousel-control-next:active {
+    color: black;
+    background-color: transparent;
+    outline: none;
+}
+
+.carousel-control-prev, .carousel-control-next, .carousel-control-prev-icon, .carousel-control-next-icon {
+    text-decoration: none !important;
+    outline: none !important;
+}
+
