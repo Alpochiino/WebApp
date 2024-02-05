@@ -22,6 +22,7 @@ namespace WebApp.Models
         [Range(1, 10000)]
         [DataType(DataType.Currency)]
         [Column(TypeName = "decimal(18, 2)")]
+        [DisplayFormat(DataFormatString = "{0:0.###}")]
         public decimal Price { get; set; }
 
         [Required(ErrorMessage = "The Images field is required.")]

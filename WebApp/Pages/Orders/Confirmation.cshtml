@@ -27,7 +27,7 @@
         <dd>@Model.Order.EndDate.ToLongDateString()</dd>
 
         <dt>Total Price:</dt>
-        <dd>@Model.Order.TotalPrice.ToString("C")</dd>
+        <dd>@Model.Order.TotalPrice.ToString("0.##")</dd>
     </dl>
 }
 else

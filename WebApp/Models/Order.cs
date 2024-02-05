@@ -18,6 +18,7 @@ namespace WebApp.Models
         [Display(Name = "Total Price")]
         [Range(1, 10000)]
         [DataType(DataType.Currency)]
+        [DisplayFormat(DataFormatString = "{0:0.###}")]
         public decimal TotalPrice { get; set; }
 
         public int UserId { get; set; }

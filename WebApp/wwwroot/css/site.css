@@ -1,16 +1,27 @@
 body {
-    font-family: : Radikal,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,Roboto,sans-serif; /* Ange typsnittet för text på sidan */
-    line-height: 1.6; /* Ange linjehöjden för texten på sidan */
-    color: #ffffff; /* Ange textfärgen till vit */
-    background-color: #333; /* Ange bakgrundsfärgen till mörkgrå */
-    margin: 0; /* Ta bort standardmarginalen för sidan */
-    padding: 0; /* Ta bort standardutfyllnaden för sidan */
+    font-family: Radikal,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #ffffff;
+    background-color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 95vh; /* Ensure the wrapper takes up at least the full height of the viewport */
 }
 
 .container {
     width: 80%;
     margin: 0 auto;
+}
 
+.flex-grow-1 {
+    flex-grow: 1; /* Make this div fill the available vertical space */
 }
 
 .text-center {
@@ -47,7 +58,6 @@ body {
     border-color: #6c757d;
 }
 
-
 /*--------------------------------------------Scrollbar------------------------------------------------*/
 
 
@@ -74,10 +84,10 @@ body {
 
 /*-----------------------------------------------------------------------------------------------------*/
 header {
-    background-color: black;
-    color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    background-color: #1a1a1a; /* Ange bakgrundsfärgen för sidhuvudet */
+    color: #ffffff; /* Ange textfärgen till vit */
+    padding: 0; /* Ange utfyllnaden runt sidhuvudet */
+    padding-left: 20px;
 }
 
 .navbar {
@@ -119,6 +129,35 @@ header {
     color: #333;
 }
 
-.container {
-    margin-top: 20px;
+.bottom-border {
+    display: flex;
+    flex-direction: column;
+    background-color: #1a1a1a; /* Bakgrundsfärg för bottenborder */
+    color: #ffffff; /* Textfärg för texten i mitten */
+    padding: 20px; /* Utfyllnad runt texten */
+    justify-content: center;
+    align-items: center;
+    width: auto;
 }
+
+/* Styling for the text in the middle of the bottom border */
+.bottom-text {
+    text-align: center;
+}
+
+.back-to-top {
+    text-decoration: none; /* Ta bort standardunderstrykning */
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.back-to-top a {
+    color: #fff;
+    font: bold;
+    text-decoration: none;
+}
+
+.back-to-top a:hover {
+    color: black;
+}
+

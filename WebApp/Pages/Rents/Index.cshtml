@@ -42,8 +42,9 @@
                 <div class="card-body">
                     <h5 class="card-title">@car.Model</h5>
                     <p class="card-text">@car.Brand</p>
-                    <p class="card-text">Year: @car.Year.ToString("yyyy")</p>
-                    <p class="card-text">Starting Rent Price: @car.Price</p>
+
+                    <p class="card-text">Rent Price: @car.Price.ToString("0.##")</p>
+                    <p class="card-text">Per Day: 500</p>
                     @if (User.Identity.IsAuthenticated)
                     {
                         if (car.Status == CarStatus.Available)
@@ -68,3 +69,4 @@
         }
     </div>
 </body>
+

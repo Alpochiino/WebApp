@@ -3,9 +3,8 @@
 @model WebApp.Pages.Cars.DetailsModel
 @inject ICar CarRepository
 
-<script src="~/js/carousel.js"></script>
 <link rel="stylesheet" href="~/css/rent.css" />
-
+<script src="~/js/carousel.js"></script>
 
 <h1>Details</h1>
 
@@ -41,16 +40,18 @@
             @Html.DisplayNameFor(model => model.Car.ImagePath)
         </dt>
        <div class="carousel" id="@($"carousel_{Model.Car.CarId}")">
-            <div class="carousel-inner">
-                @for (var i = 0; i < Model.Car.ImagePath.Count; i++)
-                {
-                    <div class="carousel-item @(i == 0 ? "active" : "")">
-                        <img class="d-block w-100" src="@Model.Car.ImagePath[i]" alt="Image @(i + 1)">
-                    </div>
-                }
+            <div class="carousel" id="@($"carousel_{Model.Car.CarId}")">
+                <div class="carousel-inner">
+                    @for (var i = 0; i < Model.Car.ImagePath.Count; i++)
+                    {
+                        <div class="carousel-item @(i == 0 ? "active" : "")">
+                            <img class="d-block w-100" src="@Model.Car.ImagePath[i]" alt="Image @(i + 1)">
+                        </div>
+                    }
+                </div>
+                <a href="javascript:void(0);" onclick="showPreviousImage('@($"carousel_{Model.Car.CarId}")')" class="carousel-control-prev">&lt;</a>
+                <a href="javascript:void(0);" onclick="showNextImage('@($"carousel_{Model.Car.CarId}")')" class="carousel-control-next">&gt;</a>
             </div>
-            <a href="javascript:void(0);" onclick="showPreviousImage('@($"carousel_{Model.Car.CarId}")')" class="carousel-control-prev">&lt;</a>
-            <a href="javascript:void(0);" onclick="showNextImage('@($"carousel_{Model.Car.CarId}")')" class="carousel-control-next">&gt;</a>
         </div>
     </dl>
 </div>
