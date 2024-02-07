@@ -2,61 +2,52 @@
 @model WebApp.Pages.Rents.RentCarModel
 
 @{
-    ViewData["Title"] = "Rent Car";
+    ViewData["Title"] = "Checkout";
 }
 
+<link rel="stylesheet" href="~/css/rentcar.css" />
 
-<h2 class="text-center mt-4">Rent Car</h2>
 
-<div class="container mt-4 text-center">
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Checkout</h2>
+
     <form method="post">
-        <div class="form-group row">
-            <label for="startDate" class="col-sm-0 col-form-label">Start Date:</label>
-            <div class="col-sm-4 mx-auto">
+        <div class="card">
+            <h4 class="card-title">Rental Details</h4>
+
+            <div class="form-group">
+                <label for="startDate" class="form-label">Start Date:</label>
                 <input type="datetime-local" class="form-control" name="startDate" id="startDate" required onchange="calculateTotalPrice()" />
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="endDate" class="col-sm-0 col-form-label">End Date:</label>
-            <div class="col-sm-4 mx-auto">
+
+            <div class="form-group">
+                <label for="endDate" class="form-label">End Date:</label>
                 <input type="datetime-local" class="form-control" name="endDate" id="endDate" required onchange="calculateTotalPrice()" />
             </div>
-        </div>
 
-        <div class="form-group row">
-            <label class="col-sm-0 col-form-label">Total Price:</label>
-            <div class="col-sm-4 mx-auto">
+            <div class="form-group">
+                <label class="form-label">Total Price:</label>
                 <span id="totalPrice" class="form-control">@Model.TotalPrice.ToString("0.##")</span>
             </div>
-        </div>
 
-        <div class="form-group row">
-            <label class="col-sm-0 col-form-label">Car Image:</label>
-            <div class="col-sm-4 mx-auto">
+            <div class="form-group">
+                <label class="form-label">Car Image:</label>
                 <div class="image-container">
                     @if (Model.Car.ImagePath != null && Model.Car.ImagePath.Any())
                     {
-                        <img src="@Url.Content(Model.Car.ImagePath.First())" alt="Car Image" class="car-image" style="width: 255px; height: 175px;">
+                        <img src="@Url.Content(Model.Car.ImagePath.First())" alt="Car Image" class="car-image">
                     }
                 </div>
             </div>
         </div>
 
-        <div class="form-group row">
-            <div class="col-sm-8 mx-auto">
-                <button type="submit" class="btn btn-primary">Rent Now</button>
-            </div>
-        </div>
+        <button type="submit" class="btn btn-primary btn-block">Rent It Now</button>
     </form>
 
-    <div class="row mt-3">
-        <div class="col-sm-8 mx-auto">
-            <a asp-page="/Rents/Index" class="btn btn-secondary">Back to List</a>
-        </div>
+    <div class="text-center mt-3">
+        <a asp-page="/Rents/Index" class="btn btn-secondary">Back</a>
     </div>
 </div>
-
-
 
 
 @section Scripts {
@@ -72,7 +63,7 @@
 
             var totalPrice = parseFloat("@Model.Price");
             var numberOfDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
-            var increasePrice = 500; //If you want to change the price you need to do the same in RentCar.cshtml.cs!!!!
+            var increasePrice = 500; //If you want to change the price Per Day you need to do the same in RentCar.cshtml.cs!!!!
             totalPrice += increasePrice * numberOfDays;
 
             document.getElementById("totalPrice").innerText = totalPrice.toFixed(2);

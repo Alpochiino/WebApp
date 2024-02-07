@@ -5,61 +5,68 @@
     ViewData["Title"] = "My Orders";
 }
 
-<h2>Current Orders</h2>
+<link rel="stylesheet" href="~/css/order.css">
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Total Price</th>
-            <th>User ID</th>
-            <th>Car ID</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.ViewModel.CurrentOrders)
-        {
+
+<section class="current-orders">
+    <h2>Current Orders</h2>
+
+    <table class="table">
+        <thead>
             <tr>
-                <td>@item.StartDate</td>
-                <td>@item.EndDate</td>
-                <td>@item.TotalPrice.ToString("0.##")</td>
-                <td>@item.UserId</td>
-                <td>@item.CarId</td>
-                <td>
-                    <a asp-page="./DeleteOrder" asp-route-id="@item.OrderId">Cancel Order</a>
-                </td>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Total Price</th>
+                <th>User ID</th>
+                <th>Car ID</th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ViewModel.CurrentOrders)
+            {
+                <tr>
+                    <td>@item.StartDate</td>
+                    <td>@item.EndDate</td>
+                    <td>@item.TotalPrice.ToString("0.##")</td>
+                    <td>@item.UserId</td>
+                    <td>@item.CarId</td>
+                    <td>
+                        <a asp-page="./DeleteOrder" asp-route-id="@item.OrderId" class="cancel-order-btn">Cancel Order</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>
 
-<h2>Previous Orders</h2>
+<section class="previous-orders">
+    <h2>Previous Orders</h2>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Total Price</th>
-            <th>User ID</th>
-            <th>Car ID</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.ViewModel.PreviousOrders)
-        {
+    <table class="table">
+        <thead>
             <tr>
-                <td>@item.StartDate</td>
-                <td>@item.EndDate</td>
-                <td>@item.TotalPrice.ToString("0.##")</td>
-                <td>@item.UserId</td>
-                <td>@item.CarId</td>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Total Price</th>
+                <th>User ID</th>
+                <th>Car ID</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ViewModel.PreviousOrders)
+            {
+                <tr>
+                    <td>@item.StartDate</td>
+                    <td>@item.EndDate</td>
+                    <td>@item.TotalPrice.ToString("0.##")</td>
+                    <td>@item.UserId</td>
+                    <td>@item.CarId</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>
 
 @section Scripts {
     @{

@@ -1,0 +1,301 @@
+﻿
+
+/*----------Index---------*/
+
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.orders-table th,
+.orders-table td {
+    border: 2px solid black;
+    padding: 8px;
+}
+
+.orders-table th {
+    background-color: #1a1a1a;
+    text-align: center;
+}
+
+.orders-table td {
+    text-align: center;
+}
+
+.delete-link {
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #dc3545;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.delete-link:hover {
+    background-color: darkred; 
+    color: white; 
+}
+
+/*----------Delete---------*/
+
+.delete-page {
+    max-width: 800px; /* Adjust as needed */
+    margin: auto;
+    margin-top: 50px;
+    padding: 100px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #1a1a1a;
+}
+
+.delete-page h4 {
+    color: white;
+}
+
+.delete-page hr {
+    border-color: #ccc;
+}
+
+.delete-page dl.row {
+    margin-bottom: 20px;
+}
+
+.delete-page dl.row dt {
+    font-weight: bold;
+}
+
+.delete-page dl.row dd {
+    margin-left: 0;
+}
+
+.delete-page p {
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.delete-page form {
+    margin-top: 20px;
+}
+
+.delete-page .delete-link {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-page .delete-link:hover {
+    background-color: #c82333;
+}
+
+.delete-page .back-link {
+    background-color: #5a5a5a; 
+    color: #fff;
+    border: none;
+    padding: 8px 13px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.delete-page .back-link:hover {
+    background-color: #454545; 
+}
+
+/*----------IndexUser---------*/
+
+.current-orders,
+.previous-orders {
+    margin-bottom: 50px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ffffff;
+}
+
+.table th {
+    background-color: #1a1a1a;
+}
+
+.cancel-order-btn {
+    color: #fff;
+    background-color: #dc3545; /* Red color */
+    padding: 5px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.cancel-order-btn:hover {
+    background-color: #c82333; /* Darker red color on hover */
+}
+
+/*----------DeleteOrder---------*/
+
+.delete-order-container {
+    max-width: 800px; /* Adjust as needed */
+    margin: auto;
+    margin-top: 50px;
+    padding: 100px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #1a1a1a;
+}
+
+.delete-order-container h4 {
+    margin-bottom: 20px;
+}
+
+.row {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.cancel-order-btn {
+    display: inline-block;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 12px 17px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cancel-order-btn:hover {
+    background-color: #c82333;
+}
+
+.back-link-btn {
+    display: inline-block;
+    background-color: #5a5a5a;
+    color: #fff;
+    border: none;
+    padding: 7px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.back-link-btn:hover {
+    background-color: #454545;
+}
+
+
+/*----------Dashboard---------*/
+
+
+.container {
+    max-width: 800px;
+}
+
+.table {
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+.text-center {
+    text-align: center;
+    font-weight: bold;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.mt-5 {
+    margin-top: 3rem;
+}
+
+.mt-3 {
+    margin-top: 1.5rem;
+}
+
+.btn-dashboard {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    background-color: grey;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.btn-dashboard:hover{
+    background-color: #575757;
+}
+
+
+/*----------Confirmation---------*/
+
+
+.container-confi{
+    max-width: 600px;
+    margin: auto;
+    margin-top: 50px;
+    padding: 100px;
+    border: 2px solid white;
+    border-radius: 10px;
+    background-color: #1a1a1a;
+}
+
+.header-confi {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.receipt-info {
+    margin-bottom: 20px;
+}
+
+.receipt-info dt {
+    font-weight: bold;
+}
+
+.receipt-info dd {
+    margin-left: 0px;
+    margin-bottom: 10px;
+}
+
+.btn-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    background-color: grey;
+    font-weight: bold;
+}
+
+.btn-secondary {
+    background-color: #565656;
+}
+
+.btn-secondary:hover {
+    background-color: #282828;
+}

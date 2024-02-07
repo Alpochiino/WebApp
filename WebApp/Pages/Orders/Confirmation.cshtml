@@ -1,45 +1,46 @@
 ﻿@page
 @model WebApp.Pages.Orders.ConfirmationModel
 
+<link rel="stylesheet" href="~/css/order.css">
+
+
 @{
     ViewData["Title"] = "Confirmation";
 }
 
-<h2>Renting Confirmation</h2>
+<div class="container-confi mt-5">
+    <div class="header-confi">
+        <h2>Renting Confirmation</h2>
 
-@if (Model.Order != null)
-{
-    <h6>Thank you for renting a car from us!</h6>
+        @if (Model.Order != null)
+        {
+            <h4>Thank you for renting a car from us!</h4>
 
-    <dl>
-        <dt>Order Id:</dt>
-        <dd>@Model.Order.OrderId</dd>
-        <dt>Car Model:</dt>
-        <dd>@Model.Order.Car.Model</dd>
+            <div class="receipt-info">
+                <dl>
+                    <dt>Order Id:</dt>
+                    <dd>@Model.Order.OrderId</dd>
+                    <dt>Car Model:</dt>
+                    <dd>@Model.Order.Car.Model</dd>
+                    <dt>Car Brand:</dt>
+                    <dd>@Model.Order.Car.Brand</dd>
+                    <dt>Start Date:</dt>
+                    <dd>@Model.Order.StartDate.ToLongDateString()</dd>
+                    <dt>End Date:</dt>
+                    <dd>@Model.Order.EndDate.ToLongDateString()</dd>
+                    <dt>Total Price:</dt>
+                    <dd>@Model.Order.TotalPrice.ToString("0.##")</dd>
+                </dl>
+            </div>
+        }
+        else
+        {
+            <p>No booking confirmation available.</p>
+        }
 
-        <dt>Car Brand:</dt>
-        <dd>@Model.Order.Car.Brand</dd>
-
-        <dt>Start Date:</dt>
-        <dd>@Model.Order.StartDate.ToLongDateString()</dd>
-
-        <dt>End Date:</dt>
-        <dd>@Model.Order.EndDate.ToLongDateString()</dd>
-
-        <dt>Total Price:</dt>
-        <dd>@Model.Order.TotalPrice.ToString("0.##")</dd>
-    </dl>
-}
-else
-{
-    <p>No booking confirmation available.</p>
-}
-
-<tr>
-    <td>
-            
-        <a class="btn btn-secondary" asp-page="/Rents/Details" asp-route-id="@Model.Order?.Car.CarId">Car Details</a> |
-        <a class="btn btn-secondary" asp-page="./Dashboard">Back to Dashboard</a> 
-
-    </td>
-</tr>
+        <div class="btn-primary">
+            <a class="btn btn-secondary" asp-page="/Rents/Details" asp-route-id="@Model.Order?.Car.CarId">Car Details</a> |
+            <a class="btn btn-secondary" asp-page="./Dashboard">Dashboard</a>
+        </div>
+    </div>
+</div>

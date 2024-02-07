@@ -1,6 +1,8 @@
 ﻿@page
 @model WebApp.Pages.Orders.DashboardModel
 
+<link rel="stylesheet" href="~/css/order.css">
+
 @{
     ViewData["Title"] = "Dashboard";
 }
@@ -24,7 +26,7 @@
                         <tr>
                             <td>ID: @order.OrderId</td>
                             <td class="text-right">
-                                <a class="btn btn-primary" asp-page="/Orders/Confirmation" asp-route-OrderId="@order.OrderId">View Details</a>
+                                <a class="btn-dashboard" asp-page="/Orders/Confirmation" asp-route-OrderId="@order.OrderId">View Details</a>
                             </td>
                         </tr>
                     }
