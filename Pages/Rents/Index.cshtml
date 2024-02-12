@@ -1,0 +1,69 @@
+﻿@page
+@model WebApp.Pages.Rents.IndexModel
+@using WebApp.Models
+
+@{
+    ViewData["Title"] = "Rent Car";
+}
+
+<link rel="stylesheet" href="~/css/rent.css" />
+<script src="~/js/carousel.js"></script>
+
+<body class="car-index-page">
+    <section class="hero-section">
+        <div class="hero-overlay">
+            <div class="container text-center">
+                <h1 class="hero-text">Find the Best Car For You</h1>
+            </div>
+        </div>
+    </section>
+
+    <img class="background-image" src="~/imagesLogo/hero-image-xl-dc9a4dd0ab428af746adb3a34614729d.jpg" alt="Car on the road">
+
+    <div class="card-container">
+        @foreach (var car in Model.Cars)
+        {
+            <div class="card">
+                <div class="carousel" id="@($"carousel_{car.CarId}")">
+                    <div class="carousel-inner">
+                        @for (var i = 0; i < car.ImagePath.Count; i++)
+                        {
+                            <div class="carousel-item @(i == 0 ? "active" : "")">
+                                <img class="d-block w-100" src="@car.ImagePath[i]" alt="Image @(i + 1)">
+                            </div>
+                        }
+                    </div>
+                    <a href="javascript:void(0);" onclick="showPreviousImage('@($"carousel_{car.CarId}")')" class="carousel-control-prev">&lt;</a>
+                    <a href="javascript:void(0);" onclick="showNextImage('@($"carousel_{car.CarId}")')" class="carousel-control-next">&gt;</a>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">@car.Model</h5>
+                    <p class="card-text">@car.Brand</p>
+
+                    <p class="card-text">Rent Price: @car.Price.ToString("0.##")</p>
+                    <p class="card-text">Per Day: 500</p>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (car.Status == CarStatus.Available)
+                        {
+                            <a asp-page="/Rents/RentCar" asp-route-id="@car.CarId" class="btn btn-primary">Rent Now</a>
+                        }
+                        else
+                        {
+                            <div class="availability-info">
+                                <p class="availability-text">This car is not available at the moment or it's already rented.</p>
+                                <button class="btn btn-secondary-disabled" disabled>Not Available</button>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <p>Please <a asp-page="/Users/Login">login</a> to rent this car.</p>
+                    }
+                    <a asp-page="/Rents/Details" asp-route-id="@car.CarId" class="btn btn-primary">Details</a>
+                </div>
+            </div>
+        }
+    </div>
+</body>
+

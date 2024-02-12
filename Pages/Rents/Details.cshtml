@@ -1,0 +1,89 @@
+﻿@page
+@model WebApp.Pages.Rents.DetailsModel
+@using WebApp.Models
+
+@{
+    ViewData["Title"] = "Car Details";
+}
+<link rel="stylesheet" href="~/css/rentdetails.css" />
+<link rel="stylesheet" href="~/css/rent.css" />
+<script src="~/js/carousel.js"></script>
+
+<h2>Car Details</h2>
+
+<div>
+    <h4>@Model.Car.Brand - @Model.Car.Model</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Car.Brand)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Car.Brand)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Car.Model)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Car.Model)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Car.Year)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Car.Year)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Car.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Car.Price)
+        </dd>
+    </dl>
+
+    <h4>Car Image</h4>
+    <div class="carousel" id="@($"carousel_{Model.Car.CarId}")">
+        <div class="carousel" id="@($"carousel_{Model.Car.CarId}")">
+            <div class="carousel-inner">
+                @for (var i = 0; i < Model.Car.ImagePath.Count; i++)
+                {
+                    <div class="carousel-item @(i == 0 ? "active" : "")">
+                        <img class="d-block w-100" src="@Model.Car.ImagePath[i]" alt="Image @(i + 1)">
+                    </div>
+                }
+            </div>
+            <a href="javascript:void(0);" onclick="showPreviousImage('@($"carousel_{Model.Car.CarId}")')" class="carousel-control-prev">&lt;</a>
+            <a href="javascript:void(0);" onclick="showNextImage('@($"carousel_{Model.Car.CarId}")')" class="carousel-control-next">&gt;</a>
+        </div>
+    </div>
+</div>
+
+<p>
+    @if (User.IsInRole("User"))
+    {
+        if (Model.Car.Status == CarStatus.Available)
+        {
+            <a asp-page="/Rents/RentCar" asp-route-id="@Model.Car.CarId" class="btn btn-primary">Rent Now</a>
+        }
+        else
+        {
+            <button class="btn btn-secondary" disabled>Not Available</button>
+        <p>This car is not available at the moment or it's already rented.</p>
+        }
+    }
+    else
+    {
+    <p>Please <a asp-page="/Users/Login">login</a> to rent this car.</p>
+    }
+</p>
+
+<div>
+    <a asp-page="/Rents/Index" class="back-link">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

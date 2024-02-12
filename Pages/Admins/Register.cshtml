@@ -1,0 +1,52 @@
+﻿@page
+@model WebApp.Pages.Admins.RegisterModel
+
+<link rel="stylesheet" href="~/css/EntryForms.css" />
+
+
+<h2>Admin Register</h2>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <p>You are already logged in as @User.Identity.Name. <a asp-page="/Index">Go to Dashboard</a></p>
+}
+else
+{
+    <form method="post" class="mt-4">
+        <div class="form-group">
+            <label asp-for="Model.Username" class="label-left"></label>
+            <input asp-for="Model.Username" class="form-control" value="Admin" readonly />
+        </div>
+        <div class="form-group" class="label-left">
+            <label asp-for="Model.Email" class="label-left"></label>
+            <input asp-for="Model.Email" class="form-control" />
+            <span asp-validation-for="Model.Email" class="text-danger"></span>
+
+        </div>
+        <div class="form-group">
+            <label asp-for="Model.Password" class="label-left"></label>
+            <input asp-for="Model.Password" type="password" class="form-control" />
+            <span asp-validation-for="Model.Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+    </form>
+
+    @if (!string.IsNullOrEmpty(TempData["error"] as string))
+    {
+        <div class="alert alert-danger mt-4" role="alert">
+            @TempData["error"]
+        </div>
+    }
+}
+
+<div>
+    <a asp-page="./Login" class="secondary-btn">Back to Login</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
