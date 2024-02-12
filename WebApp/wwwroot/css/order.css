@@ -13,13 +13,18 @@
     padding: 8px;
 }
 
+h2#ordsh2{
+    color: black;
+}
+
 .orders-table th {
+    color: white;
     background-color: #1a1a1a;
     text-align: center;
 }
 
 .orders-table td {
-    border: 2px solid ;
+    border: 1px solid;
     text-align: center;
 }
 
@@ -61,6 +66,7 @@
 
 .delete-page dl.row {
     margin-bottom: 20px;
+    flex-direction: column;
 }
 
 .delete-page dl.row dt {
@@ -170,8 +176,15 @@ h2#crntords{
 .row {
     margin-bottom: 20px;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+}
+
+.col-sm-2, .col-sm-10 {
+    color: white;
+}
+
+p{
+    color: white;
 }
 
 .cancel-order-btn {
@@ -290,9 +303,10 @@ h2#crntords{
 }
 
 .btn {
-    display: inline;
+    display: inline-block;
     padding: 10px 20px;
     border: none;
+    margin-bottom: 20px;
     border-radius: 5px;
     cursor: pointer;
     color: white;
