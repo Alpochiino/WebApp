@@ -31,11 +31,11 @@
                         <ul class="navbar-nav flex-grow-1">
                             @if (isAdmin)
                             {
-                                @Html.PartialAsync("_AdminMenu")
+                                @Html.Partial("_AdminMenu")
                             }
                             else if (isUser)
                             {
-                                @Html.PartialAsync("_UserMenu")
+                                @Html.Partial("_UserMenu")
                             }
                             else
                             {
