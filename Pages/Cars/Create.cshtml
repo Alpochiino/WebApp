@@ -1,0 +1,51 @@
+﻿@page "/Cars/Create"
+@using WebApp.Interfaces
+@model WebApp.Pages.Cars.CreateModel
+@inject ICar CarRepository
+
+<h2>Create a New Car</h2>
+
+<form asp-page="Create" method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Car.Model" class="control-label"></label>
+        <input asp-for="Car.Model" class="form-control"/>
+        <span asp-validation-for="Car.Model" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Car.Brand" class="control-label"></label>
+        <input asp-for="Car.Brand" class="form-control" />
+        <span asp-validation-for="Car.Brand" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Car.Year" class="control-label"></label>
+        <input asp-for="Car.Year" class="form-control" />
+        <span asp-validation-for="Car.Year" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Car.Price" class="control-label"></label>
+        <input asp-for="Car.Price" class="form-control" />
+        <span asp-validation-for="Car.Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Car.ImageFiles"></label>
+        <input asp-for="Car.ImageFiles" type="file" multiple class="form-control" />
+        <span asp-validation-for="Car.ImageFiles" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="hidden" asp-for="Car.ImagePath"/>
+    </div>
+    <div class="form-group">
+        <button type="submit" value="Create" class="btn btn-primary">Create Car</button>
+    </div>
+    </form>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

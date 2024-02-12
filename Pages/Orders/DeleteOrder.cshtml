@@ -1,0 +1,50 @@
+﻿@page
+@using WebApp.Interfaces
+@model WebApp.Pages.Orders.DeleteOrderModel
+@inject IOrder OrderRepository
+
+<link rel="stylesheet" href="~/css/order.css">
+
+@{
+    ViewData["Title"] = "Cancel Order";
+}
+
+<div class="delete-order-container">
+    <h4>Order</h4>
+    <hr />
+    <div class="row">
+        <div class="col-sm-2">Car Id:</div>
+        <div class="col-sm-10">@Model.Order.CarId</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">User Id:</div>
+        <div class="col-sm-10">@Model.Order.UserId</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">Start Date:</div>
+        <div class="col-sm-10">@Model.Order.StartDate</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">End Date:</div>
+        <div class="col-sm-10">@Model.Order.EndDate</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">Total Price:</div>
+        <div class="col-sm-10">@Model.Order.TotalPrice.ToString("0.##")</div>
+    </div>
+
+
+    <p>Are you sure you want to cancel this order?</p>
+    <form method="post">
+        <input type="hidden" asp-for="Order.OrderId" />
+        <button type="submit" class="cancel-order-btn">Cancel Order</button> |
+        <a asp-page="./IndexUser" class="back-link-btn">Back to List</a>
+    </form>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

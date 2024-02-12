@@ -1,0 +1,43 @@
+﻿@page "/Orders/Index"
+@using WebApp.Interfaces
+@model WebApp.Pages.Orders.IndexModel
+@inject IOrder OrderRepository
+
+<link rel="stylesheet" href="~/css/order.css">
+
+
+<h2>Orders</h2>
+
+<table class="orders-table">
+    <thead>
+        <tr>
+            <th>Car Id</th>
+            <th>User Id</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Total Price</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model.Orders)
+        {
+            <tr>
+                <td>@order.CarId</td>
+                <td>@order.UserId</td>
+                <td>@order.StartDate</td>
+                <td>@order.EndDate</td>
+                <td>@order.TotalPrice.ToString("0.##")</td>
+                <td>
+                    <a class="delete-link" asp-page="./Delete" asp-route-id="@order.OrderId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
