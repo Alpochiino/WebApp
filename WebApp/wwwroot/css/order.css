@@ -10,7 +10,6 @@
 
 .orders-table th,
 .orders-table td {
-    border: 2px solid black;
     padding: 8px;
 }
 
@@ -20,6 +19,7 @@
 }
 
 .orders-table td {
+    border: 2px solid black;
     text-align: center;
 }
 
@@ -124,11 +124,13 @@
 .table th,
 .table td {
     padding: 8px;
+    color: #1a1a1a;
     text-align: center;
     border-bottom: 1px solid #ffffff;
 }
 
 .table th {
+    color: black;
     background-color: #1a1a1a;
 }
 
@@ -249,10 +251,10 @@
 
 
 .container-confi{
-    max-width: 600px;
+    max-width: 400px;
     margin: auto;
-    margin-top: 50px;
-    padding: 100px;
+    margin-top: 40px;
+    padding: 70px;
     border: 2px solid white;
     border-radius: 10px;
     background-color: #1a1a1a;

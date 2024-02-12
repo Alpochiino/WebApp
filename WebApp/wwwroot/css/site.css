@@ -1,8 +1,8 @@
 body {
     font-family: Radikal,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: #ffffff;
-    background-color: #333;
+    color: #000000;
+    background-color: #fff;
     margin: 0;
     padding: 0;
     display: flex;
@@ -89,8 +89,8 @@ body {
 
 /*-----------------------------------------------------------------------------------------------------*/
 header {
-    background-color: #1a1a1a; /* Ange bakgrundsfärgen för sidhuvudet */
-    color: #ffffff; /* Ange textfärgen till vit */
+    background-color: #1a1a1a; /* Ange bakgrundsfï¿½rgen fï¿½r sidhuvudet */
+    color: #ffffff; /* Ange textfï¿½rgen till vit */
     padding: 0; /* Ange utfyllnaden runt sidhuvudet */
     padding-left: 20px;
 }
@@ -130,6 +130,13 @@ header {
     transition: color 0.3s ease-in-out;
 }
 
+.nava-links{
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
 .nav-link:hover {
     color: #333;
 }
@@ -137,8 +144,8 @@ header {
 .bottom-border {
     display: flex;
     flex-direction: column;
-    background-color: #1a1a1a; /* Bakgrundsfärg för bottenborder */
-    color: #ffffff; /* Textfärg för texten i mitten */
+    background-color: #1a1a1a; /* Bakgrundsfï¿½rg fï¿½r bottenborder */
+    color: #ffffff; /* Textfï¿½rg fï¿½r texten i mitten */
     padding: 20px; /* Utfyllnad runt texten */
     justify-content: center;
     align-items: center;
@@ -166,3 +173,15 @@ header {
     color: black;
 }
 
+
+/*--------------------------------------------IndexSite------------------------------------------------*/
+
+
+.text-center-logo {
+    text-align: center;
+}
+
+.text-center-logo img {
+    max-width: 500px; 
+    height: auto;
+}
