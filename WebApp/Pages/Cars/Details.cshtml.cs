@@ -18,9 +18,9 @@ namespace WebApp.Pages.Cars
 
         public Car Car { get; set; }
 
-        public IActionResult OnGet(int id)
+        public async Task <IActionResult> OnGetAsync(int id)
         {
-            Car = carRep.GetCarById(id);
+            Car = await carRep.GetCarByIdAsync(id);
 
             if (Car == null)
             {

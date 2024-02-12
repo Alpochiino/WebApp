@@ -20,9 +20,9 @@ namespace WebApp.Pages.Cars
 
         public IEnumerable<Car> Cars { get; set; }
 
-        public void OnGet()
+        public async Task OnGetAsync()
         {
-            Cars = carRep.GetAllCars();
+            Cars = await carRep.GetAllCarsAsync();
         }
     }
 }

@@ -5,13 +5,13 @@ namespace WebApp.Interfaces
     public interface IAdmin
     {
         Admin GetAdminById(int Id);
-        IEnumerable<Admin> GetAdminByUsername(string username);
-        IEnumerable<Admin> GetAdminByEmail(string email);
-        IEnumerable<Admin> GetAllAdmins();
-        bool IsEmailTaken(string email);
-        void AddAdmin(Admin admin);
-        void UpdateAdmin(Admin admin);
-        void DeleteAdmin(int adminId);
-        void SaveChanges();
+        Task <IEnumerable<Admin>> GetAdminByUsernameAsync(string username);
+        Task <IEnumerable<Admin>> GetAdminByEmailAsync(string email);
+        Task <IEnumerable<Admin>> GetAllAdminsAsync();
+        Task <bool> IsEmailTakenAsync(string email);
+        Task AddAdminAsync(Admin admin);
+        Task UpdateAdminAsync(Admin admin);
+        Task DeleteAdminAsync(int adminId);
+        Task SaveChangesAsync();
     }
 }

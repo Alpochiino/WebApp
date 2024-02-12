@@ -1,4 +1,5 @@
-﻿using WebApp.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using WebApp.Data;
 using WebApp.Interfaces;
 using WebApp.Models;
 
@@ -13,54 +14,55 @@ namespace WebApp.Repository
             this.context = context;
         }
 
-        public User GetUserById(int Id)
+        public async Task <User> GetUserByIdAsync(int Id)
         {
-            return context.Users.FirstOrDefault(u => u.Id == Id);
+            return await context.Users.FirstOrDefaultAsync(u => u.Id == Id);
         }
 
-        public IEnumerable<User> GetUserByUsername(string username)
+        public async Task <IEnumerable<User>> GetUserByUsernameAsync(string username)
         {
-            return context.Users.Where(u => u.Username == username).ToList();
+            return await context.Users.Where(u => u.Username == username).ToListAsync();
         }
 
-        public IEnumerable<User> GetAllUser()
+        public async Task <IEnumerable<User>> GetAllUserAsync()
         {
-            return context.Users.OrderBy(x => x.LastName);
+            return await context.Users.OrderBy(x => x.LastName).ToListAsync();
         }
 
-        public IEnumerable<User> GetUserByEmail(string email)
+        public async Task <IEnumerable<User>> GetUserByEmailAsync(string email)
         {
-            return context.Users.Where(u => u.Email == email).ToList();
+            return await context.Users.Where(u => u.Email == email).ToListAsync();
         }
 
-        public bool IsPhoneNumberTaken(string phoneNumber)
+        public async Task <bool> IsPhoneNumberTakenAsync(string phoneNumber)
         {
-            return context.Users.Any(u => u.PhoneNumber == phoneNumber);
+            return await context.Users.AnyAsync(u => u.PhoneNumber == phoneNumber);
         }
 
-        public bool IsEmailTaken(string email)
+        public async Task <bool> IsEmailTakenAsync(string email)
         {
-            return context.Users.Any(u => u.Email == email);
+            return await context.Users.AnyAsync(u => u.Email == email);
         }
 
-        public void AddUser(User user)
+        public async Task AddUserAsync(User user)
         {
             context.Users.Add(user);
+            await context.SaveChangesAsync();
         }
 
-        public void UpdateUser(User user)
+        public async Task UpdateUserAsync(User user)
         {
             context.Users.Update(user);
-            context.SaveChanges();
+            await context.SaveChangesAsync();
         }
 
-        public void DeleteUser(int UserId)
+        public async Task DeleteUserAsync(int UserId)
         {
         }
 
-        public void SaveChanges()
+        public async Task SaveChangesAsync()
         {
-            context.SaveChanges();
+            await context.SaveChangesAsync();
         }
     }
 }

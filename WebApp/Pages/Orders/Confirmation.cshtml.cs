@@ -25,14 +25,14 @@ namespace WebApp.Pages.Orders
 
         public Order Order { get; set; }
 
-        public void OnGet()
+        public async Task OnGetAsync()
         {
-            var currentUser = userRep.GetUserByUsername(User.Identity.Name).FirstOrDefault();
+            var currentUser = (await userRep.GetUserByUsernameAsync(User.Identity.Name)).FirstOrDefault();
+
             try
             {
                 if (currentUser != null)
                 {
-                    // Include Car navigation property to fetch Car details
                     Order = context.Orders.Include(o => o.Car).FirstOrDefault(o => o.UserId == currentUser.Id && o.OrderId == OrderId);
                 }
                 else

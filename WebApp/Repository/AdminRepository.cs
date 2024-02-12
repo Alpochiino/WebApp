@@ -19,44 +19,44 @@ namespace WebApp.Repository
             return context.Admins.FirstOrDefault(u => u.Id == Id);
         }
 
-        public IEnumerable<Admin> GetAdminByUsername(string username)
+        public async Task <IEnumerable<Admin>> GetAdminByUsernameAsync(string username)
         {
-            return context.Admins.Where(u => u.Username == username).ToList();
+            return await context.Admins.Where(u => u.Username == username).ToListAsync();
         }
 
-        public IEnumerable<Admin> GetAllAdmins()
+        public async Task <IEnumerable<Admin>> GetAllAdminsAsync()
         {
-            return context.Admins.OrderBy(x => x.Username);
+            return await context.Admins.OrderBy(x => x.Username).ToListAsync();
         }
 
-        public IEnumerable<Admin> GetAdminByEmail(string email)
+        public async Task <IEnumerable<Admin>> GetAdminByEmailAsync(string email)
         {
-            return context.Admins.Where(u => u.Email == email).ToList();
+            return await context.Admins.Where(u => u.Email == email).ToListAsync();
         }
 
-        public bool IsEmailTaken(string email)
+        public async Task <bool> IsEmailTakenAsync(string email)
         {
-            return context.Admins.Any(u => u.Email == email);
+            return await context.Admins.AnyAsync(u => u.Email == email);
         }
 
-        public void AddAdmin(Admin admin)
+        public async Task AddAdminAsync(Admin admin)
         {
-            context.Admins.Add(admin);
+            await context.Admins.AddAsync(admin);
         }
 
-        public void UpdateAdmin(Admin admin)
+        public async Task UpdateAdminAsync(Admin admin)
         {
             context.Admins.Update(admin);
-            context.SaveChanges();
+            await context.SaveChangesAsync();
         }
 
-        public void DeleteAdmin(int adminId)
+        public async Task DeleteAdminAsync(int adminId)
         {
         }
 
-        public void SaveChanges()
+        public async Task SaveChangesAsync()
         {
-            context.SaveChanges();
+            await context.SaveChangesAsync();
         }
     }
 }

@@ -38,7 +38,7 @@ namespace WebApp.Pages.Admins
         {
             if (ModelState.IsValid)
             {
-                var existingAdmins = adminRep.GetAdminByEmail(Model.Email);
+                var existingAdmins = await adminRep.GetAdminByEmailAsync(Model.Email);
                 if (!existingAdmins.Any())
                 {
                     var newAdmin = new Admin
@@ -68,16 +68,18 @@ namespace WebApp.Pages.Admins
                     };
 
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), properties);
-                    adminRep.AddAdmin(newAdmin);
-                    adminRep.SaveChanges();
+                    
+                    await adminRep.AddAdminAsync(newAdmin);
+                    await adminRep.SaveChangesAsync();
+
                     TempData["success"] = "Admin created successfully";
                     return RedirectToPage("/Cars/Index");
                 }
                 else
                 {
-                    if (adminRep.IsEmailTaken(Model.Email))
+                    if (await adminRep.IsEmailTakenAsync(Model.Email))
                     {
-                        ModelState.AddModelError("Email", "E-postadressen är redan upptagen");
+                        ModelState.AddModelError("Email", "E-postadressen Ã¤r redan upptagen");
                     }
                 }
             }

@@ -18,9 +18,9 @@ namespace WebApp.Pages.Orders
 
         public IEnumerable<Order> Orders { get; set; }
 
-        public void OnGet()
+        public async Task OnGetAsync()
         {
-            Orders = orderRep.GetAllOrders();
+            Orders = await orderRep.GetAllOrdersAsync();
         }
     }
 }

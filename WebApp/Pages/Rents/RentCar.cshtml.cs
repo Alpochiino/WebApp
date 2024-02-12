@@ -39,9 +39,9 @@ namespace WebApp.Pages.Rents
 
         public Car Car { get; set; }
 
-        public void OnGet()
+        public async Task OnGetAsync()
         {
-            Car = carRep.GetCarById(Id);
+            Car = await carRep.GetCarByIdAsync(Id);
 
             if (Car == null || Car.Status != CarStatus.Available)
             {
@@ -54,7 +54,7 @@ namespace WebApp.Pages.Rents
 
         public async Task<IActionResult> OnPostAsync()
         {
-            Car = carRep.GetCarById(Id);
+            Car = await carRep.GetCarByIdAsync(Id);
 
             if (Car == null || Car.Status != CarStatus.Available)
             {
@@ -81,7 +81,9 @@ namespace WebApp.Pages.Rents
             Car.Status = CarStatus.Rented;
             await context.SaveChangesAsync();
 
-            var currentUser = userRep.GetUserByUsername(User.Identity.Name).FirstOrDefault();
+            var currentUserTask = userRep.GetUserByUsernameAsync(User.Identity.Name);
+            var users = await currentUserTask;
+            var currentUser = users.FirstOrDefault();
 
             if (currentUser != null)
             {

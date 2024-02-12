@@ -34,7 +34,7 @@ namespace WebApp.Pages.Admins
 
         public async Task<IActionResult> OnPostAsync()
         {
-            var admins = adminRep.GetAdminByEmail(Model.Email);
+            var admins = await adminRep.GetAdminByEmailAsync(Model.Email);
 
             try
             {

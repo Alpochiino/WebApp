@@ -21,10 +21,10 @@ namespace WebApp.Pages.Rents
 
         public IEnumerable<Car> Cars { get; set; }
 
-        public void OnGet()
+        public async Task OnGetAsync()
         {
             UpdateCarStatus();
-            Cars = carRep.GetAllAvailableCars();
+            Cars = await carRep.GetAllAvailableCarsAsync();
         }
 
         public void UpdateCarStatus()

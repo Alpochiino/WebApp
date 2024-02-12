@@ -20,7 +20,7 @@ namespace WebApp.Pages.Users
         [BindProperty]
         public User user { get; set; }
 
-        public IActionResult OnGet()
+        public async Task<IActionResult> OnGetAsync()
         {
             ClaimsPrincipal claimUser = HttpContext.User;
 
@@ -34,7 +34,7 @@ namespace WebApp.Pages.Users
 
         public async Task<IActionResult> OnPostAsync()
         {
-            var users = userRep.GetUserByEmail(user.Email);
+            var users = await userRep.GetUserByEmailAsync(user.Email);
 
             try
             {

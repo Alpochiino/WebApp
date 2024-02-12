@@ -18,9 +18,9 @@ namespace WebApp.Pages.Users
 
         public IEnumerable<User> Users { get; set; }
 
-        public IActionResult OnGet()
+        public async Task<IActionResult> OnGetAsync()
         {
-            Users = userRep.GetAllUser();
+            Users = await userRep.GetAllUserAsync();
             return Page();
         }
     }

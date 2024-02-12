@@ -21,9 +21,9 @@ namespace WebApp.Pages.Cars
         [BindProperty]
         public Car Car { get; set; }
 
-        public IActionResult OnGet(int id)
+        public async Task <IActionResult> OnGetAsync(int id)
         {
-            Car = carRep.GetCarById(id);
+            Car = await carRep.GetCarByIdAsync(id);
             if (Car == null)
             {
                 return NotFound();
@@ -57,7 +57,7 @@ namespace WebApp.Pages.Cars
                     }
                 }
 
-                await carRep.UpdateCar(Car);
+                await carRep.UpdateCarAsync(Car);
                 TempData["success"] = "Car edited successfully";
                 return RedirectToPage("./Index");
             }

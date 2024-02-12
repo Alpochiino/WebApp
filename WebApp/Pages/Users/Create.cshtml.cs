@@ -24,15 +24,15 @@ namespace WebApp.Pages.Users
         [BindProperty]
         public User User { get; set; }
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            userRep.AddUser(User);
-            userRep.SaveChanges();
+            await userRep.AddUserAsync(User);
+            await userRep.SaveChangesAsync();
 
             return RedirectToPage("Index");
         }

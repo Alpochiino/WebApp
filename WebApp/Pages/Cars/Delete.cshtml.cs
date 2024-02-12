@@ -20,9 +20,9 @@ namespace WebApp.Pages.Cars
         [BindProperty]
         public Car Car { get; set; }
 
-        public IActionResult OnGet(int id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            Car = carRep.GetCarById(id);
+            Car = await carRep.GetCarByIdAsync(id);
             if (Car == null)
             {
                 return NotFound();
@@ -35,7 +35,7 @@ namespace WebApp.Pages.Cars
         {
             if (Car.CarId > 0) 
             {
-                await carRep.DeleteCar(Car.CarId);
+                await carRep.DeleteCarAsync(Car.CarId);
                 TempData["success"] = "Car deleted successfully";
             }
             else

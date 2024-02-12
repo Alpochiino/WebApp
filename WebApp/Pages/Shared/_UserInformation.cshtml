@@ -1,11 +1,17 @@
 ﻿@if (User.Identity.IsAuthenticated)
 {
     <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nava-links dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="navbar-text">Logged in as @User.Identity.Name</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" asp-page="/Orders/Dashboard">Dashboard</a>
+           @if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("User"))
+                {
+                    <a class="dropdown-item" asp-page="/Orders/Dashboard">Dashboard</a>
+                }
+            }
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" asp-page="/Users/Logout">Logout</a>
         </div>

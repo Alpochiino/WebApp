@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using WebApp.Data;
 using WebApp.Interfaces;
 using WebApplic.Models;
@@ -24,17 +25,17 @@ namespace WebApp.Pages.Orders
         public async Task<IActionResult> OnGetAsync()
         {
             var username = User.Identity.Name;
-            var currentUser = userRep.GetUserByUsername(username).FirstOrDefault();
+            var currentUser = (await userRep.GetUserByUsernameAsync(username)).FirstOrDefault();
 
             if (currentUser != null)
             {
-                var currentOrders = context.Orders
+                var currentOrders = await context.Orders
                     .Where(o => o.UserId == currentUser.Id && o.EndDate >= DateTime.Now)
-                    .ToList();
+                    .ToListAsync();
 
-                var previousOrders = context.Orders
+                var previousOrders = await context.Orders
                     .Where(o => o.UserId == currentUser.Id && o.EndDate < DateTime.Now)
-                    .ToList();
+                    .ToListAsync();
 
                 ViewModel = new OrderViewModel
                 {

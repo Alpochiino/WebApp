@@ -36,8 +36,11 @@ namespace WebApp.Pages.Users
 
                 if (ModelState.IsValid)
                 {
-                    var existingUsers = userRep.GetUserByUsername(Model.Username);
-                    if (!existingUsers.Any() && !userRep.IsPhoneNumberTaken(Model.PhoneNumber) && !userRep.IsEmailTaken(Model.Email))
+                    var existingUsers = await userRep.GetUserByUsernameAsync(Model.Username);
+                    bool isPhoneNumberTaken = await userRep.IsPhoneNumberTakenAsync(Model.PhoneNumber);
+                    bool isEmailTaken = await userRep.IsEmailTakenAsync(Model.Email);
+                    
+                    if (!existingUsers.Any() && !isPhoneNumberTaken && !isEmailTaken)
                     {
                         var newUser = new User
                         {
@@ -68,8 +71,8 @@ namespace WebApp.Pages.Users
                         };
 
                         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
-                        userRep.AddUser(newUser);
-                        userRep.SaveChanges();
+                        await userRep.AddUserAsync(newUser);
+                        await userRep.SaveChangesAsync();
                         TempData["success"] = "Account created successfully";
                         return RedirectToPage("/Rents/Index");
                     }
@@ -77,17 +80,17 @@ namespace WebApp.Pages.Users
                     {
                         if (existingUsers.Any())
                         {
-                            ModelState.AddModelError("Model.Username", "Användarnamnet är redan upptaget");
+                            ModelState.AddModelError("Model.Username", "Anvï¿½ndarnamnet ï¿½r redan upptaget");
                         }
 
-                        if (userRep.IsPhoneNumberTaken(Model.PhoneNumber))
+                        if (await userRep.IsPhoneNumberTakenAsync(Model.PhoneNumber))
                         {
-                            ModelState.AddModelError("Model.PhoneNumber", "Telefonnumret är redan upptaget");
+                            ModelState.AddModelError("Model.PhoneNumber", "Telefonnumret ï¿½r redan upptaget");
                         }
 
-                        if (userRep.IsEmailTaken(Model.Email))
+                        if (await userRep.IsEmailTakenAsync(Model.Email))
                         {
-                            ModelState.AddModelError("Model.Email", "E-postadressen är redan upptagen");
+                            ModelState.AddModelError("Model.Email", "E-postadressen ï¿½r redan upptagen");
                         }
                     }
                 }

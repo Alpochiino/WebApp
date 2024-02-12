@@ -53,7 +53,7 @@ namespace WebApp.Pages.Cars
                     }
                 }
 
-                await carRep.AddCar(Car);
+                await carRep.AddCarAsync(Car);
                 TempData["success"] = "Car created successfully";
                 return RedirectToPage("./Index");
             }

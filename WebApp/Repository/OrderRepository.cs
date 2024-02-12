@@ -1,6 +1,7 @@
 ﻿using WebApp.Interfaces;
 using WebApp.Models;
 using WebApp.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebApp.Repository
 {
@@ -13,29 +14,29 @@ namespace WebApp.Repository
             this.context = context;
         }
 
-        public IEnumerable<Order> GetAllOrders()
+        public async Task <IEnumerable<Order>> GetAllOrdersAsync()
         {
-            return context.Orders.OrderBy(x => x.OrderId);
+            return await context.Orders.OrderBy(x => x.OrderId).ToListAsync();
         }
 
-        public Order GetOrderById(int orderId)
+        public async Task <Order> GetOrderByIdAsync(int orderId)
         {
-            return context.Orders.FirstOrDefault(order => order.OrderId == orderId);
+            return await context.Orders.FirstOrDefaultAsync(order => order.OrderId == orderId);
         }
 
-        public void AddOrder(Order order)
+        public async Task AddOrderAsync(Order order)
         {
             context.Orders.Add(order);
-            context.SaveChanges();
+            await context.SaveChangesAsync();
         }
 
-        public void UpdateOrder(Order order)
+        public async Task UpdateOrderAsync(Order order)
         {
             context.Orders.Update(order);
-            context.SaveChanges();
+            await context.SaveChangesAsync();
         }
 
-        public void DeleteOrder(int orderId)
+        public async Task DeleteOrderAsync(int orderId)
         {
         }
     }

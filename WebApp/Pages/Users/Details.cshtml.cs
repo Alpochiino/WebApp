@@ -18,14 +18,14 @@ namespace WebApp.Pages.Users
 
         public User UserDetail { get; set; }
 
-        public IActionResult OnGet(int? id)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            UserDetail = userRep.GetUserById(id.Value);
+            UserDetail = await userRep.GetUserByIdAsync(id.Value);
 
             if (UserDetail == null)
             {
