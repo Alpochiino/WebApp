@@ -7,7 +7,20 @@
     padding: 20px;
     background-color: #111111;
     border-radius: 10px;
+    color: white;
     margin: auto;
+}
+
+.checkout-title{
+    color: white;
+}
+
+input#startDate{
+    color: black;
+}
+
+input#endDate{
+    color: black;
 }
 
 .form-group {
@@ -17,6 +30,7 @@
 .form-label {
     font-weight: bold;
     margin-bottom: 5px;
+    color: white;
     display: block;
 }
 
@@ -24,6 +38,8 @@
     width: 100%;
     padding: 5px;
     border-radius: 10px;
+    color: white;
+    font-weight: bolder;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
@@ -47,6 +63,7 @@
 .card-title {
     font-size: 1.2rem;
     font-weight: bold;
+    color: white;
     margin-bottom: 15px;
 }
 

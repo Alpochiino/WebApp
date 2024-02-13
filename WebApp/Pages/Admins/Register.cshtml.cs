@@ -77,9 +77,9 @@ namespace WebApp.Pages.Admins
                 }
                 else
                 {
-                    if (await adminRep.IsEmailTakenAsync(Model.Email))
+                    if (existingAdmins.Any())
                     {
-                        ModelState.AddModelError("Email", "E-postadressen är redan upptagen");
+                        ModelState.AddModelError("Model.Email", "E-postadressen är redan upptagen");
                     }
                 }
             }

@@ -4,7 +4,6 @@
     padding: 20px;
 }
 
-/* Car Details Styles */
 .car-details {
     background-color: #fff;
     border-radius: 8px;
@@ -13,32 +12,7 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
-.car-details h4 {
-    color: #333;
-    margin-bottom: 20px;
-}
 
-.car-details dl {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0;
-}
-
-.car-details dt, .car-details dd {
-    flex: 1 1 50%;
-    padding: 10px;
-}
-
-.car-details dt {
-    font-weight: bold;
-    color: #666;
-}
-
-.car-details dd {
-    color: #333;
-}
-
-/* Car Image Styles */
 .car-image-container {
     margin-top: 20px;
     text-align: center;
@@ -51,32 +25,39 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Rent Now Button Styles */
-.rent-button {
-    text-align: center;
-    margin-top: 30px;
-}
 
-.rent-button .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-    padding: 12px 30px;
-    font-size: 18px;
-}
-
-.rent-button .btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
-}
-
-/* Back to List Link Styles */
 .back-link {
     display: inline-block;
     margin-top: 20px;
-    color: #007bff;
+    color: #6b6b6b;
     text-decoration: none;
 }
 
 .back-link:hover {
     text-decoration: underline;
+}
+
+.dl-row {
+    margin-bottom: 20px;
+}
+
+.dl-row dt, .dl-row dd {
+    display: inline-block;
+    vertical-align: top;
+    padding: 10px 5px;
+    margin: 0;
+    margin-right: 0;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.dl-row dt {
+    font-weight: bolder;
+    color: black;
+}
+
+.dl-row dd {
+    font-weight: bold;
+    margin-right: 30px;
+    color: #4b4b4b;
 }

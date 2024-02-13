@@ -14,35 +14,20 @@
 <div>
     <h4>@Model.Car.Brand - @Model.Car.Model</h4>
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Car.Brand)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Car.Brand)
-        </dd>
+    <dl class="row dl-row">
+        <dt class="col-sm-2">Brand:</dt>
+        <dd class="col-sm-10">@Model.Car.Brand</dd>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Car.Model)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Car.Model)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Car.Year)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Car.Year)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Car.Price)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Car.Price)
-        </dd>
+        <dt class="col-sm-2">Model:</dt>
+        <dd class="col-sm-10">@Model.Car.Model</dd>
+
+        <dt class="col-sm-2">Year:</dt>
+        <dd class="col-sm-10">@Model.Car.Year.ToString("yyyy")</dd>
+
+        <dt class="col-sm-2">Price:</dt>
+        <dd class="col-sm-10">@Model.Car.Price.ToString("0.##")</dd>
     </dl>
 
-    <h4>Car Image</h4>
     <div class="carousel" id="@($"carousel_{Model.Car.CarId}")">
         <div class="carousel" id="@($"carousel_{Model.Car.CarId}")">
             <div class="carousel-inner">

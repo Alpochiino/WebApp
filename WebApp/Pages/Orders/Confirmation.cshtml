@@ -14,7 +14,7 @@
 
         @if (Model.Order != null)
         {
-            <h4>Thank you for renting a car from us!</h4>
+            <h4>Thank you for renting a car from us @User.Identity.Name!</h4>
 
             <div class="receipt-info">
                 <dl>

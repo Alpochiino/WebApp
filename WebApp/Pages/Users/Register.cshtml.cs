@@ -56,11 +56,11 @@ namespace WebApp.Pages.Users
                         newUser.Role = "User";
 
                         var claims = new List<Claim>
-                    {
+                        {
                         new Claim(ClaimTypes.Name, Model.Username),
                         new Claim(ClaimTypes.NameIdentifier, Model.Email),
                         new Claim(ClaimTypes.Role, "User")
-                    };
+                        };
 
                         var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
@@ -71,8 +71,10 @@ namespace WebApp.Pages.Users
                         };
 
                         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
+
                         await userRep.AddUserAsync(newUser);
                         await userRep.SaveChangesAsync();
+
                         TempData["success"] = "Account created successfully";
                         return RedirectToPage("/Rents/Index");
                     }
@@ -80,17 +82,17 @@ namespace WebApp.Pages.Users
                     {
                         if (existingUsers.Any())
                         {
-                            ModelState.AddModelError("Model.Username", "Anv�ndarnamnet �r redan upptaget");
+                            ModelState.AddModelError("Model.Username", "Användarnamnet är redan upptaget");
                         }
 
                         if (await userRep.IsPhoneNumberTakenAsync(Model.PhoneNumber))
                         {
-                            ModelState.AddModelError("Model.PhoneNumber", "Telefonnumret �r redan upptaget");
+                            ModelState.AddModelError("Model.PhoneNumber", "Telefonnumret är redan upptaget");
                         }
 
                         if (await userRep.IsEmailTakenAsync(Model.Email))
                         {
-                            ModelState.AddModelError("Model.Email", "E-postadressen �r redan upptagen");
+                            ModelState.AddModelError("Model.Email", "E-postadressen är redan upptagen");
                         }
                     }
                 }
