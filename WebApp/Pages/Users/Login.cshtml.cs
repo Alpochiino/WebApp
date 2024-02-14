@@ -18,9 +18,9 @@ namespace WebApp.Pages.Users
         }
 
         [BindProperty]
-        public User user { get; set; }
+        public new User User { get; set; }
 
-        public async Task<IActionResult> OnGetAsync()
+        public IActionResult OnGet()
         {
             ClaimsPrincipal claimUser = HttpContext.User;
 
@@ -34,7 +34,7 @@ namespace WebApp.Pages.Users
 
         public async Task<IActionResult> OnPostAsync()
         {
-            var users = await userRep.GetUserByEmailAsync(user.Email);
+            var users = await userRep.GetUserByEmailAsync(User.Email);
 
             try
             {
@@ -42,12 +42,12 @@ namespace WebApp.Pages.Users
                 {
                     foreach (var user in users)
                     {
-                        if (user.Password == this.user.Password)
+                        if (user.Password == this.User.Password)
                         {
                             List<Claim> claims = new List<Claim>()
                             {
                             new Claim(ClaimTypes.Name, user.FirstName),
-                            new Claim(ClaimTypes.NameIdentifier, this.user.Email),
+                            new Claim(ClaimTypes.NameIdentifier, this.User.Email),
                             new Claim(ClaimTypes.Role, user.Role),
                             };
 
@@ -57,7 +57,7 @@ namespace WebApp.Pages.Users
                             AuthenticationProperties properties = new AuthenticationProperties()
                             {
                                 AllowRefresh = true,
-                                IsPersistent = this.user.ToString() == "true",
+                                IsPersistent = false,
                             };
 
                             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), properties);

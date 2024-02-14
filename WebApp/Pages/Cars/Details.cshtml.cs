@@ -16,7 +16,7 @@ namespace WebApp.Pages.Cars
             this.carRep = carRep;
         }
 
-        public Car Car { get; set; }
+        public Car? Car { get; set; }
 
         public async Task <IActionResult> OnGetAsync(int id)
         {

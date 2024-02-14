@@ -18,7 +18,7 @@ namespace WebApp.Pages.Users
         }
 
         [BindProperty]
-        public User User { get; set; }
+        public new User User { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

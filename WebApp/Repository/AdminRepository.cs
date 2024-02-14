@@ -52,6 +52,7 @@ namespace WebApp.Repository
 
         public async Task DeleteAdminAsync(int adminId)
         {
+            await context.SaveChangesAsync();
         }
 
         public async Task SaveChangesAsync()

@@ -11,14 +11,13 @@ namespace WebApp.Pages.Cars
     public class IndexModel : PageModel
     {
         private readonly ICar carRep;
-        private readonly ApplicationDbContext context;
 
         public IndexModel(ICar carRep, ApplicationDbContext context)
         {
             this.carRep = carRep;
         }
 
-        public IEnumerable<Car> Cars { get; set; }
+        public IEnumerable<Car>? Cars { get; set; }
 
         public async Task OnGetAsync()
         {

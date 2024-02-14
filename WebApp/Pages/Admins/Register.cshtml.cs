@@ -64,7 +64,7 @@ namespace WebApp.Pages.Admins
                     AuthenticationProperties properties = new AuthenticationProperties()
                     {
                         AllowRefresh = true,
-                        IsPersistent = Model.ToString() == "true",
+                        IsPersistent = false,
                     };
 
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), properties);

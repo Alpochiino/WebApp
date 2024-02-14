@@ -58,6 +58,7 @@ namespace WebApp.Repository
 
         public async Task DeleteUserAsync(int UserId)
         {
+            await context.SaveChangesAsync();
         }
 
         public async Task SaveChangesAsync()

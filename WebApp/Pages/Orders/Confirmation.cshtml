@@ -14,22 +14,22 @@
 
         @if (Model.Order != null)
         {
-            <h4>Thank you for renting a car from us @User.Identity.Name!</h4>
+            <h4>Thank you for renting a car from us @User?.Identity?.Name!</h4>
 
             <div class="receipt-info">
                 <dl>
                     <dt>Order Id:</dt>
                     <dd>@Model.Order.OrderId</dd>
                     <dt>Car Model:</dt>
-                    <dd>@Model.Order.Car.Model</dd>
+                    <dd>@Model?.Order?.Car?.Model</dd>
                     <dt>Car Brand:</dt>
-                    <dd>@Model.Order.Car.Brand</dd>
+                    <dd>@Model?.Order?.Car?.Brand</dd>
                     <dt>Start Date:</dt>
-                    <dd>@Model.Order.StartDate.ToLongDateString()</dd>
+                    <dd>@Model?.Order?.StartDate.ToLongDateString()</dd>
                     <dt>End Date:</dt>
-                    <dd>@Model.Order.EndDate.ToLongDateString()</dd>
+                    <dd>@Model?.Order?.EndDate.ToLongDateString()</dd>
                     <dt>Total Price:</dt>
-                    <dd>@Model.Order.TotalPrice.ToString("0.##")</dd>
+                    <dd>@Model?.Order?.TotalPrice.ToString("0.##")</dd>
                 </dl>
             </div>
         }
@@ -39,7 +39,7 @@
         }
 
         <div class="btn-primary">
-            <a class="btn btn-secondary" asp-page="/Rents/Details" asp-route-id="@Model.Order?.Car.CarId">Car Details</a> |
+            <a class="btn btn-secondary" asp-page="/Rents/Details" asp-route-id="@Model?.Order?.Car?.CarId">Car Details</a> |
             <a class="btn btn-secondary" asp-page="./Dashboard">Dashboard</a>
         </div>
     </div>

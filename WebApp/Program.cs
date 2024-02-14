@@ -29,13 +29,6 @@ namespace WebApp
                 option.ExpireTimeSpan = TimeSpan.FromMinutes(20);
             });
 
-            builder.Services.AddAuthorizationBuilder()
-            .AddPolicy("AdminOnly", policy =>
-            {
-                policy.RequireRole("User");
-                policy.RequireRole("Admin");
-            });
-
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

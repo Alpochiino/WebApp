@@ -21,11 +21,11 @@ namespace WebApp.Models
         [DisplayFormat(DataFormatString = "{0:0.###}")]
         public decimal TotalPrice { get; set; }
 
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
 
-        public int CarId { get; set; }
+        public int? CarId { get; set; }
 
-        public Car Car { get; set; }
+        public Car? Car { get; set; }
 
     }
 }

@@ -38,6 +38,7 @@ namespace WebApp.Repository
 
         public async Task DeleteOrderAsync(int orderId)
         {
+            await context.SaveChangesAsync();
         }
     }
 }

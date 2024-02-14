@@ -10,11 +10,11 @@ namespace WebApp.Models
 
         [StringLength(60, MinimumLength = 1)]
         [Required]
-        public string Model { get; set; }
+        public required string Model { get; set; }
 
         [StringLength(60, MinimumLength = 1)]
         [Required]
-        public string Brand { get; set; }
+        public required string Brand { get; set; }
 
         [DataType(DataType.Date)]
         public DateTime Year { get; set; }
@@ -28,9 +28,9 @@ namespace WebApp.Models
         [Required(ErrorMessage = "The Images field is required.")]
         [NotMapped]
         [Display(Name = "Images")]
-        public List<IFormFile> ImageFiles { get; set; }
+        public required List<IFormFile> ImageFiles { get; set; }
 
-        public List<string> ImagePath { get; set; }
+        public required List<string> ImagePath { get; set; }
 
         public bool IsAvailable { get; set; } = true;
 
