@@ -6,9 +6,7 @@
         carouselItems.forEach(function (item, index) {
             item.style.display = index === currentImageIndex ? 'block' : 'none';
         });
-    } else {
-        console.error('Carousel element not found: ' + carouselId);
-    }
+    } 
 }
 
 function showPreviousImage(carouselId) {

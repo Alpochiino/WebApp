@@ -1,16 +1,13 @@
 ﻿@if (User.Identity.IsAuthenticated)
 {
     <li class="nav-item dropdown">
-        <a class="nava-links dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nava-links" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="toggleDropdown()">
             <span class="navbar-text">Logged in as @User.Identity.Name</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-           @if (User.Identity.IsAuthenticated)
+            @if (User.IsInRole("User"))
             {
-                if (User.IsInRole("User"))
-                {
-                    <a class="dropdown-item" asp-page="/Orders/Dashboard">Dashboard</a>
-                }
+                <a class="dropdown-item" asp-page="/Orders/Dashboard">Dashboard</a>
             }
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" asp-page="/Users/Logout">Logout</a>
@@ -26,3 +23,14 @@ else
         <a class="nav-link" asp-page="/Users/Register">Register</a>
     </li>
 }
+
+<script>
+    function toggleDropdown() {
+        var dropdownMenu = document.querySelector(".dropdown-menu");
+        if (dropdownMenu.style.display === "block") {
+            dropdownMenu.style.display = "none";
+        } else {
+            dropdownMenu.style.display = "block";
+        }
+    }
+</script>
