@@ -1,7 +1,7 @@
 ﻿@if (User.Identity.IsAuthenticated)
 {
     <li class="nav-item dropdown">
-        <a class="nava-links" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="toggleDropdown()">
+        <a class="nava-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="toggleDropdown()">
             <span class="navbar-text">Logged in as @User.Identity.Name</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
