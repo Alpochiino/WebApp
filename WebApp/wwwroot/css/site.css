@@ -131,14 +131,14 @@ header {
     margin: 0;
 }
 
-.nav-link {
+.nav-link{
     text-decoration: none;
     color: #fff;
     font-weight: bold;
     transition: color 0.3s ease-in-out;
 }
 
-.nava-links{
+.nava-link{
     text-decoration: none;
     color: #fff;
     font-weight: bold;
@@ -147,6 +147,11 @@ header {
 
 .nav-link:hover {
     color: #333;
+}
+
+.nava-link:hover {
+    color: #333;
+    filter: brightness(20%);
 }
 
 .nav-item {
