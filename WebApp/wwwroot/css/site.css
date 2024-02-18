@@ -20,7 +20,7 @@ h2#entryform {
 .wrapper {
     display: flex;
     flex-direction: column;
-    min-height: 95vh; /* Ensure the wrapper takes up at least the full height of the viewport */
+    min-height: 95vh;
 }
 
 .container {
@@ -29,7 +29,7 @@ h2#entryform {
 }
 
 .flex-grow-1 {
-    flex-grow: 1; /* Make this div fill the available vertical space */
+    flex-grow: 1; 
 }
 
 .text-center {
@@ -201,21 +201,20 @@ header {
 .bottom-border {
     display: flex;
     flex-direction: column;
-    background-color: #1a1a1a; /* Bakgrundsf�rg f�r bottenborder */
-    color: #ffffff; /* Textf�rg f�r texten i mitten */
-    padding: 20px; /* Utfyllnad runt texten */
+    background-color: #1a1a1a;
+    color: #ffffff; 
+    padding: 20px; 
     justify-content: center;
     align-items: center;
     width: auto;
 }
 
-/* Styling for the text in the middle of the bottom border */
 .bottom-text {
     text-align: center;
 }
 
 .back-to-top {
-    text-decoration: none; /* Ta bort standardunderstrykning */
+    text-decoration: none; 
     cursor: pointer;
     font-size: 15px;
 }
