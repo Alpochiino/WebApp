@@ -67,7 +67,7 @@ namespace WebApp.Pages.Users
                         var authProperties = new AuthenticationProperties
                         {
                             AllowRefresh = true,
-                            IsPersistent = false,
+                            IsPersistent = true,
                         };
 
                         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);

@@ -46,9 +46,9 @@ namespace WebApp.Pages.Users
                         {
                             List<Claim> claims = new List<Claim>()
                             {
-                            new Claim(ClaimTypes.Name, user.FirstName),
-                            new Claim(ClaimTypes.NameIdentifier, this.User.Email),
-                            new Claim(ClaimTypes.Role, user.Role),
+                                new Claim(ClaimTypes.Name, user.FirstName),
+                                new Claim(ClaimTypes.NameIdentifier, this.User.Email),
+                                new Claim(ClaimTypes.Role, user.Role),
                             };
 
                             ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims,
@@ -57,7 +57,7 @@ namespace WebApp.Pages.Users
                             AuthenticationProperties properties = new AuthenticationProperties()
                             {
                                 AllowRefresh = true,
-                                IsPersistent = false,
+                                IsPersistent = true,
                             };
 
                             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), properties);
