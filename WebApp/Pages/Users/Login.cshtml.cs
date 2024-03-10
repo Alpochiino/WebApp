@@ -62,7 +62,7 @@ namespace WebApp.Pages.Users
 
                             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), properties);
                             TempData["success"] = "Logged In";
-                            return base.RedirectToPage("/Index");
+                            return RedirectToPage("/Rents/Index");
                         }
                         else
                         {
