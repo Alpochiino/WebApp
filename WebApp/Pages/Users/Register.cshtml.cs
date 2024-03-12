@@ -57,9 +57,9 @@ namespace WebApp.Pages.Users
 
                         var claims = new List<Claim>
                         {
-                        new Claim(ClaimTypes.Name, Model.Username),
-                        new Claim(ClaimTypes.NameIdentifier, Model.Email),
-                        new Claim(ClaimTypes.Role, "User")
+                            new Claim(ClaimTypes.Name, Model.Username),
+                            new Claim(ClaimTypes.NameIdentifier, Model.Email),
+                            new Claim(ClaimTypes.Role, "User")
                         };
 
                         var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

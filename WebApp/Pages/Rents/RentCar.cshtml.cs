@@ -48,7 +48,7 @@ namespace WebApp.Pages.Rents
                 RedirectToPage("/Rents/Index");
             }
 
-            Price = Car.Price; // Initialize the Price property
+            Price = Car.Price; 
             TotalPrice = Price;
         }
 
@@ -71,7 +71,7 @@ namespace WebApp.Pages.Rents
             Price = Car.Price;
 
             int numberOfDays = (int)(EndDate - StartDate).TotalDays;
-            decimal increasePrice = 500; //If you want to change the price you need to do the same in RentCar.cshtml!!!!
+            decimal increasePrice = 500; //(If you want to change the price you need to do the same in RentCar.cshtml!!!!)
             decimal totalPrice = Price + increasePrice * numberOfDays;
 
             TotalPrice = totalPrice;

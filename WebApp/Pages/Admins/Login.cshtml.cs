@@ -46,9 +46,9 @@ namespace WebApp.Pages.Admins
                         {
                             List<Claim> claims = new List<Claim>()
                             {
-                            new Claim(ClaimTypes.Name, admin.Username),
-                            new Claim(ClaimTypes.NameIdentifier, Model.Email),
-                            new Claim(ClaimTypes.Role, admin.Role)
+                                new Claim(ClaimTypes.Name, admin.Username),
+                                new Claim(ClaimTypes.NameIdentifier, Model.Email),
+                                new Claim(ClaimTypes.Role, admin.Role)
                             };
 
                             ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims,
