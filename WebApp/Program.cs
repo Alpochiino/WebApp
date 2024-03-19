@@ -16,8 +16,8 @@ namespace WebApp
 
             builder.Services.AddScoped<ICar, CarRepository>();
             builder.Services.AddScoped<IOrder, OrderRepository>();
-            builder.Services.AddTransient<IUser, UserRepository>();
-            builder.Services.AddTransient<IAdmin, AdminRepository>();
+            builder.Services.AddScoped<IUser, UserRepository>();
+            builder.Services.AddScoped<IAdmin, AdminRepository>();
 
             // Add services to the container.
             builder.Services.AddRazorPages();
